@@ -1,0 +1,14 @@
+
+public class PerfectShufflerRunner {
+
+	public static void main(java.lang.String[] args) {
+		// TODO Auto-generated method stub
+		PerfectShuffler data = new PerfectShuffler();
+		System.out.println(data.getIndexAt(51));
+		
+		
+		
+
+	}
+
+}

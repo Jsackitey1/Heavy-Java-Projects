@@ -1,0 +1,26 @@
+
+public class PerfectShufflerRunner {
+
+	public static void main(java.lang.String[] args) {
+		
+		
+		PerfectShuffler data = new PerfectShuffler();
+		
+		System.out.println(data.toString());
+		data.outShuffle();
+		
+		System.out.println(data.toString());
+		
+		data.inShuffle();
+		
+		
+
+		
+		System.out.println(data.toString());
+		
+		
+		
+
+	}
+
+}
