@@ -8,15 +8,12 @@ public class BigFraction {
 	private BigInteger numerator;
 	private BigInteger denominator;
 	
-	
-	
-	BigFraction(BigInteger numerator, BigInteger denominator){
-		
-		
+	BigFraction(BigFraction f){
 		
 	}
 	
-	BigFraction(BigFraction f){
+	BigFraction(BigInteger numerator, BigInteger denominator){
+		
 		
 	}
 	

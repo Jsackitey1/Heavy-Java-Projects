@@ -1,0 +1,26 @@
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
+
+public class BigFraction {
+	private BigInteger numerator;
+	private Biginteger denominator;
+	
+	BigFraction(BigFraction f){
+		
+	}
+	
+	BigFraction(java.math.BigInteger numerator, java.math.BigInteger denominator){
+		
+		
+	}
+	
+	BigFraction(long numerator, long denominator){
+		
+	}
+	
+	BigFraction(java.lang.String s){
+		
+	}
+
+}
