@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class PerfectShuffler {
 
@@ -56,6 +57,50 @@ public class PerfectShuffler {
 		String newdata=Arrays.toString(data);
 		return newdata.substring(1,newdata.length()-1);
 	}
+	
+	
+	public static void main(String[] args) {
+
+        PerfectShuffler shuffler = new PerfectShuffler();
+
+        System.out.println(shuffler);
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter \"i\" for inShuffle and \"o\" for outShuffle: ");
+
+       
+        while (input.hasNextLine()) {
+
+            String command = input.nextLine().trim();
+
+            if (command.equals("i")) {
+
+                shuffler.inShuffle();
+
+                System.out.println(shuffler);
+
+            } else if (command.equals("o")) {
+
+                shuffler.outShuffle();
+
+                System.out.println(shuffler);
+
+            } else if (command.isEmpty()) {
+
+                break;
+
+            
+
+        }
+
+ 
+
+       
+        
+        }
+        input.close();
+    }
 
 	
 
