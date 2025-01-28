@@ -1,0 +1,19 @@
+import java.math.BigInteger;
+
+public class BigFractionRunner {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		BigFraction fraction1 = new BigFraction(new BigInteger("3"), new BigInteger("9"));
+        BigFraction fraction2 = new BigFraction(new BigInteger("2"), new BigInteger("5"));
+
+        System.out.println("Fraction 1: " + fraction1); 
+        System.out.println("Fraction 2: " + fraction2); 
+
+        BigFraction sum = fraction1.add(fraction2);
+        System.out.println("Sum: " + sum);
+
+	}
+
+}
