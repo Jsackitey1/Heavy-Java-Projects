@@ -53,3 +53,16 @@ Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -product org.eclipse
 
 !ENTRY ch.qos.logback.classic 1 0 2025-01-28 10:36:45.312
 !MESSAGE Logback config file: /Users/josephsackitey/Desktop/eclipse_workspace/cs112/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml
+!SESSION 2025-01-28 21:18:08.717 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.4
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/josephsackitey/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -product org.eclipse.epp.package.java.product -keyring /Users/josephsackitey/.eclipse_keyring
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-28 21:18:09.911
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-28 21:24:26.824
+!MESSAGE Logback config file: /Users/josephsackitey/Desktop/eclipse_workspace/cs112/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml

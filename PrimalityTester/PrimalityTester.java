@@ -12,18 +12,25 @@ public class PrimalityTester {
         Scanner input = new Scanner(System.in); 
         System.out.print("Enter an integer greater than 1: "); 
         
-        if (input.hasNextInt()) { 
+        if (input.hasNextInt()) {
+        	
             int number = input.nextInt(); 
 
             
             if (number < 2) {
                 System.out.println("invalid input");
-            } else if (isPrime(number)) {
+            } 
+            
+            else if (isPrime(number)) {
                 System.out.println("prime");
-            } else {
+            } 
+            
+            else {
                 System.out.println("composite");
             }
-        } else {
+        } 
+        
+        else {
             System.out.println("invalid input"); 
         }
 

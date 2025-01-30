@@ -14,7 +14,7 @@ public class LineLength {
 
         int linelength = len.length();
         
-        String charact= (linelength > 1)? "character":"characters" ;
+        String charact= (linelength > 1)? "characters":"character" ;
       
         System.out.println("That line is " + linelength +" "+ charact+ " long.");
 
