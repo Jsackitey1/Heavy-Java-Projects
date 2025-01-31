@@ -9,8 +9,6 @@ public class BigFraction {
 	private BigInteger num;
 	private BigInteger den;
 	
-	
-	
 	BigFraction(BigInteger num, BigInteger den){
 		
 		BigInteger GCD= num.gcd(den);
@@ -28,14 +26,8 @@ public class BigFraction {
 	
 	
 	BigFraction(BigFraction f){
-		String[] parts= f.toString().split("/");
-		BigInteger num= new BigInteger(parts[0]);
-		BigInteger den= new BigInteger(parts[1]);
-		
 		this.num=num;
 		this.den=den;
-		
-		new BigFraction(num,den);
 	}
 	
 

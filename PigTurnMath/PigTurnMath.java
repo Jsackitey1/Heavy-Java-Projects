@@ -12,17 +12,17 @@ public class PigTurnMath {
         BigFraction[] e = new BigFraction[holdAt + 6];
 
         for (int t = holdAt; t <= holdAt + 5; t++) {
-            e[t] = new BigFraction(BigInteger.valueOf(t), BigInteger.valueOf(6));
+            e[t] = new BigFraction(BigInteger.valueOf(t), BigInteger.valueOf(1));
         }
 
-        for (int t = holdAt - 1; t >= 0; t--) {
+        for (int i = holdAt - 1; i >= 0; i--) {
             BigFraction sum = BigFraction.ZERO;
 
-                        for (int roll = 2; roll <= 6; roll++) {
-                sum = sum.add(e[t + roll]);
+              for (int roll = 2; roll <= 6; roll++) {
+                sum = sum.add(e[i + roll]);
             }
 
-            e[t] = sum.divide(new BigFraction(BigInteger.valueOf(6), BigInteger.ONE));
+            e[i] = sum.divide(new BigFraction(BigInteger.valueOf(6), BigInteger.ONE));
         }
 
         return e[0]; 

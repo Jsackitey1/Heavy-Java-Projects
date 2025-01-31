@@ -3,148 +3,108 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 
 public class BigFraction {
-	
-	public static final BigFraction ONE = new BigFraction(BigInteger.ONE, BigInteger.ONE);
-	public static final BigFraction ZERO = new BigFraction(BigInteger.ZERO, BigInteger.ONE);
-	private BigInteger num;
-	private BigInteger den;
-	
-	
-	
-	BigFraction(BigInteger num, BigInteger den){
-		
-		BigInteger GCD= num.gcd(den);
-		num=num.divide(GCD);
-		den=den.divide(GCD);
-		
-		if (den.signum()<0) {
-			den=den.negate();
-			num=num.negate();
-		}
-		this.num = num;
-        this.den = den;
-		
-	}
-	
-	
+
+    public static final BigFraction ONE = new BigFraction(BigInteger.ONE, BigInteger.ONE);
+    public static final BigFraction ZERO = new BigFraction(BigInteger.ZERO, BigInteger.ONE);
+
+    private BigInteger num;
+    private BigInteger den;
+
+    public BigFraction(BigInteger num, BigInteger den) {
+        if (den.equals(BigInteger.ZERO)) {
+            throw new IllegalArgumentException("Denominator cannot be zero.");
+        }
+
+        BigInteger gcd = num.gcd(den);
+        this.num = num.divide(gcd);
+        this.den = den.divide(gcd);
+
+        if (this.den.compareTo(BigInteger.ZERO) < 0) {
+            this.num = this.num.negate();
+            this.den = this.den.negate();
+        }
+    }
+
+    public BigFraction(long num, long den) {
+        this(BigInteger.valueOf(num), BigInteger.valueOf(den));
+    }
 	BigFraction(BigFraction f){
-		String[] parts= f.toString().split("/");
-		BigInteger num= new BigInteger(parts[0]);
-		BigInteger den= new BigInteger(parts[1]);
-		
-		this.num=num;
-		this.den=den;
-		
-		new BigFraction(num,den);
-	}
+			this.num= f.getNum();
+			this.den=f.getDen();
+			
+			
+		}
 	
+    public BigFraction(String s) {
+        String[] parts = s.split("/");
+        if (parts.length != 2) {
+            throw new IllegalArgumentException("Input string must be in the format 'num/den'.");
+        }
+        this.num = new BigInteger(parts[0]);
+        this.den = new BigInteger(parts[1]);
 
-	BigFraction(long numerator, long denominator){
-		BigInteger num=BigInteger.valueOf(numerator);
-		BigInteger den=BigInteger.valueOf(denominator);
-		
-		this.num=num;
-		this.den=den;
-		
-	  new BigFraction(num,den);
+        if (this.den.equals(BigInteger.ZERO)) {
+            throw new IllegalArgumentException("Denominator cannot be zero.");
+        }
 
-		
-	}
-	
-	BigFraction(String s){
-		String[] parts=s.split("/");
+        BigInteger gcd = this.num.gcd(this.den);
+        this.num = this.num.divide(gcd);
+        this.den = this.den.divide(gcd);
 
-		this.num=new BigInteger(parts[0]);
-		this.den=new BigInteger(parts[1]);
-		
-		new BigFraction(num,den);
-		
-	}
-	
-	
+        if (this.den.compareTo(BigInteger.ZERO) < 0) {
+            this.num = this.num.negate();
+            this.den = this.den.negate();
+        }
+    }
+
+    
 	public BigFraction add(BigFraction b) {
-		BigFraction fraction = new  BigFraction(b);
-		
-		 BigInteger otherNum = fraction.getNum();
-		 BigInteger otherDen = fraction.getDen();
-		
-		 BigInteger commonDen = this.den.multiply(otherDen);
-		
-		 BigInteger newNum = this.num.multiply(otherDen).add(otherNum.multiply(this.den));
-		
-		   
-		return new BigFraction(newNum, commonDen);
-	}
-	
-	
+        BigInteger commonDen = this.den.multiply(b.getDen());
+        BigInteger newNum = this.num.multiply(b.getDen()).add(b.getNum().multiply(this.den));
+        return new BigFraction(newNum, commonDen);
+    }
 
-	public BigDecimal asBigDecimal(int scale, RoundingMode roundingMode){
-		BigDecimal num= new BigDecimal(this.num);
-		BigDecimal den= new BigDecimal (this.den);
-		BigDecimal results= num.divide(den, scale, roundingMode);
-		return results;
-	} 
-	
-	
-	public BigFraction divide(BigFraction b) {
-		BigFraction fraction = new  BigFraction(b);
+    public BigFraction subtract(BigFraction b) {
+        BigInteger commonDen = this.den.multiply(b.getDen());
+        BigInteger newNum = this.num.multiply(b.getDen()).subtract(b.getNum().multiply(this.den));
+        return new BigFraction(newNum, commonDen);
+    }
 
-	    BigInteger newNum = fraction.getNum();
-	    BigInteger newDen = fraction.getDen();
+    public BigFraction multiply(BigFraction b) {
+        BigInteger newNum = this.num.multiply(b.getNum());
+        BigInteger newDen = this.den.multiply(b.getDen());
+        return new BigFraction(newNum, newDen);
+    }
 
-	   
-	    BigInteger resultNum = this.num.multiply(newDen);
-	    BigInteger resultDen = this.den.multiply(newNum);
+    public BigFraction divide(BigFraction b) {
+        if (b.getNum().equals(BigInteger.ZERO)) {
+            throw new ArithmeticException("Cannot divide by zero.");
+        }
+        BigInteger newNum = this.num.multiply(b.getDen());
+        BigInteger newDen = this.den.multiply(b.getNum());
+        return new BigFraction(newNum, newDen);
+    }
 
-	    return new BigFraction(resultNum, resultDen);
-	}
+    public BigFraction negate() {
+        return new BigFraction(this.num.negate(), this.den);
+    }
 
-	
-	public BigInteger getDen() {
-		return this.den;
-		
-	}
-	
-	public BigInteger getNum() {
-		return this.num;
-		
-	}
-	
-	public BigFraction multiply(BigFraction b) {
-		BigFraction fraction = new  BigFraction(b);
-		BigInteger newNum= fraction.getNum();
-		BigInteger newDen =fraction.getDen();
-	
-	    BigInteger resultNum = this.num.multiply(newNum);
-	    BigInteger resultDen = this.den.multiply(newDen);
+    public BigDecimal asBigDecimal(int scale, RoundingMode roundingMode) {
+        BigDecimal num = new BigDecimal(this.num);
+        BigDecimal den = new BigDecimal(this.den);
+        return num.divide(den, scale, roundingMode);
+    }
 
-	    return new BigFraction(resultNum, resultDen);
-		
-	}
-	
-	public BigFraction negate() {
-		return new BigFraction(this.num.negate(), this.den);
-	}
-	
-	public BigFraction  subtract(BigFraction b) {
-		BigFraction fraction = new  BigFraction(b);
-		
-		 BigInteger otherNum = fraction.getNum();
-		 BigInteger otherDen = fraction.getDen();
-		
-		 BigInteger commonDen = this.den.multiply(otherDen);
-		
-		 BigInteger newNum = this.num.multiply(otherDen).subtract(otherNum.multiply(this.den));
-		
-		   
-		return new BigFraction(newNum, commonDen);
-		
-	}
-	
-	public java.lang.String toString(){
-		
-		return this.num+"/"+this.den;
-		
-	}
+    public BigInteger getNum() {
+        return this.num;
+    }
 
+    public BigInteger getDen() {
+        return this.den;
+    }
+
+    @Override
+    public String toString() {
+        return this.num + "/" + this.den;
+    }
 }

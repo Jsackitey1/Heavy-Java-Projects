@@ -67,7 +67,7 @@ public class PerfectShuffler {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter \"i\" for inShuffle and \"o\" for outShuffle: ");
+       // System.out.print("Enter \"i\" for inShuffle and \"o\" for outShuffle: ");
 
        
         while (input.hasNextLine()) {
@@ -90,14 +90,8 @@ public class PerfectShuffler {
 
                 break;
 
-            
-
-        }
-
- 
-
-       
-        
+           
+        }        
         }
         input.close();
     }
