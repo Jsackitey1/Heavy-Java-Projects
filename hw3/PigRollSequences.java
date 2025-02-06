@@ -16,7 +16,7 @@ public class PigRollSequences {
 //	    if(turnTotal<0) {
 //	        return 0;
 //	    }
-//	    
+//	   
 //	    int total = 0;
 //	    
 //	    for (int i = 2; i <= 6; i++) {
@@ -35,6 +35,7 @@ public class PigRollSequences {
 		dp[0] = 1; 
 
 		// Calculate sequences for each possible total from 1 to turnTotal
+		
 		for (int i = 1; i <= turnTotal; i++) {
 			for (int dice = 2; dice <= 6; dice++) {
 				if (i >= dice) {
