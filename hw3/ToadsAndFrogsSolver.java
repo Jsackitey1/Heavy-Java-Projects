@@ -83,7 +83,6 @@ public class ToadsAndFrogsSolver {
 	                    // Recursive check
 	                    char winner = getWinner(board, opponent);
 	                    
-	                    // Unmake hop
 	                    board[i] = FROG;
 	                    board[i - 2] = EMPTY;
 	                    
@@ -96,7 +95,7 @@ public class ToadsAndFrogsSolver {
 	    }
 	    
 	    // If no winning moves found, return opponent
-	    return board[0];
+	    return opponent;
 	}
 
 }

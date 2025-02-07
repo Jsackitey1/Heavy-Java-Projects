@@ -1,12 +1,12 @@
 
 public class Catalan {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		for (int i=0;i<10;i++)
-			System.out.println(c(i));
-
-	}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		for (int i=0;i<10;i++)
+//			System.out.println(c(i));
+//
+//	}
 	
 	public static long c (int n) {
 //		if (n==0) {
