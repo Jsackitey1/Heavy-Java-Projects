@@ -5,7 +5,7 @@ public class NearestNeighborPoint2D {
 	private ArrayList<MyPoint2D> points; 
 
 	public NearestNeighborPoint2D() {
-		points = new ArrayList<>(); 
+		points = new ArrayList<>();
 	}
 
 	public void add(MyPoint2D point) {
