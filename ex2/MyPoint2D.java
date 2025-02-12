@@ -1,12 +1,9 @@
 
 public class MyPoint2D {
-	static double x;
-	static double y;
+	
+	private double x;
+	private double y;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 	
 	public MyPoint2D(double x, double y) {
 		this.x=x;
@@ -26,23 +23,23 @@ public class MyPoint2D {
 	
 	@Override
 	public String toString() {
-		return String.format("(%s, %s)",MyPoint2D.getX(), MyPoint2D.getY());
+		return String.format("(%g, %g)",this.x, this.y);
 	}
 
-	public static double getX() {
+	public double getX() {
 		return x;
 	}
 
-	public static void setX(int x) {
-		MyPoint2D.x = x;
+	public void setX(int x) {
+		this.x = x;
 	}
 
-	public static double getY() {
+	public double getY() {
 		return y;
 	}
 
-	public static void setY(int y) {
-		MyPoint2D.y = y;
+	public void setY(int y) {
+		this.y = y;
 	}
 
 }
