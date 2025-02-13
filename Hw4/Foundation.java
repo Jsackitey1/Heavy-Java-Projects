@@ -10,9 +10,10 @@ public class Foundation extends CardStack {
 	}
 
 	public boolean playTo(Card card) {
+		
 		if (stack.isEmpty() && card.getRank() == 0) {
 			super.addCard(card);
-
+			return true;
 		}
 
 		Card topCard = getTopCard();

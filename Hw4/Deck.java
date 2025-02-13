@@ -12,6 +12,7 @@ public class Deck extends CardStack{
 		//knuth shuffle
 		
 		for(int i=stack.size()-1;i>0;i--) {
+			
 			int j=random.nextInt(i+1);
 			
 			Card c=stack.get(i);

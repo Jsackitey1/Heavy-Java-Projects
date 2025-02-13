@@ -3,6 +3,7 @@
  * @author sackjo02
  *
  */
+
 public class Card {
 	
 	private int rank,suits;
@@ -36,7 +37,6 @@ public class Card {
 	}
 	
 	
-
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
@@ -49,7 +49,6 @@ public class Card {
 		this.suits = suits;
 	}
 
-	
 	
 	public String toString() {
 		return rankNames[rank]+ suitNames[suits];

@@ -21,6 +21,7 @@ public class CardStack {
 	}
 	
 	public boolean playTo(Card card) {
+		
 		if(card==null) {
 			return false;
 		}
