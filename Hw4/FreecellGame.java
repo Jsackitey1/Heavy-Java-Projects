@@ -1,4 +1,3 @@
-
 public class FreecellGame {
 	private CardStack[] stacks = new CardStack[17];
 	// 0:deck ; 1-4:cells ; 5-8:foundations , 9-16:cascades
@@ -22,6 +21,7 @@ public class FreecellGame {
 		}
 	}
 
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 1; i < stacks.length; i++) {
@@ -31,9 +31,16 @@ public class FreecellGame {
 	}
 
 	public boolean play(int srcStackNum, int destStackNum) {
+		// Validate stack numbers
+		if (srcStackNum < 0 || srcStackNum >= stacks.length ||
+				destStackNum < 0 || destStackNum >= stacks.length) {
+			return false;
+		}
 
+		if (stacks[srcStackNum].isEmpty()) {
+			return false;
+		}
 		return stacks[destStackNum].playTo(stacks[srcStackNum]);
-
 	}
 
 	public Card[] getStack(int stackNum) {
@@ -41,7 +48,6 @@ public class FreecellGame {
 
 	}
 
-	
 	// completed when all 52 cards all in the foundation
 	public boolean isGameOver() {
 		int totalCards = 0;

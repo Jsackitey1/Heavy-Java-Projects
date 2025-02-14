@@ -41,8 +41,8 @@ public class Card {
 		this.rank = rank;
 	}
 
-	public int getSuits() {
-		return suits;
+	public int getSuit() {
+		return this.suits;
 	}
 
 	public void setSuits(int suits) {

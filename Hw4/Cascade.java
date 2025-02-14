@@ -5,7 +5,7 @@ public class Cascade extends CardStack{
 		super();
 		
 	}
-	//incomplete
+
 	public boolean playTo(Card card) {
 		
 		if (stack.isEmpty()) {
@@ -16,7 +16,7 @@ public class Cascade extends CardStack{
 		Card topCard = getTopCard();
 		
 
-		if (Card.suitIsRed[topCard.getSuits()] !=  Card.suitIsRed[card.getSuits()] && card.getRank() == topCard.getRank() - 1) {
+		if (Card.suitIsRed[topCard.getSuit()] !=  Card.suitIsRed[card.getSuit()] && card.getRank() == topCard.getRank() - 1) {
 			super.addCard(card);
 			return true;
 		}

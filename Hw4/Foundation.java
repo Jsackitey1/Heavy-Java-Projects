@@ -1,4 +1,3 @@
-
 public class Foundation extends CardStack {
 
 	public Foundation() {
@@ -10,15 +9,22 @@ public class Foundation extends CardStack {
 	}
 
 	public boolean playTo(Card card) {
-		
-		if (stack.isEmpty() && card.getRank() == 0) {
-			super.addCard(card);
-			return true;
+		if (card == null) {
+			return false;
+		}
+
+		if (stack.isEmpty()) {
+
+			if (card.getRank() == 0) {
+				super.addCard(card);
+				return true;
+			}
+			return false;
 		}
 
 		Card topCard = getTopCard();
 
-		if (card.getSuits() == topCard.getSuits() && card.getRank() == topCard.getRank() + 1) {
+		if (card.getSuit() == topCard.getSuit() && card.getRank() == topCard.getRank() + 1) {
 			super.addCard(card);
 			return true;
 		}

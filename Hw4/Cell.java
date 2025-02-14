@@ -6,7 +6,7 @@ public class Cell extends CardStack{
 	}
 	
 	
-	//incomplete
+	
 	
 	public boolean playTo(Card card) {
 		
