@@ -3,18 +3,31 @@ public class FreecellGame {
 	// 0:deck ; 1-4:cells ; 5-8:foundations , 9-16:cascades
 
 	public FreecellGame(long seed) {
-
+		// deck (index 0)
 		stacks[0] = new Deck(seed);
 
 		for (int i = 1; i < stacks.length; i++) {
 			stacks[i] = new CardStack();
 		}
 
-		int i = 9;
+		// cells 1-4
+		for (int i = 1; i <= 4; i++) {
+			stacks[i] = new Cell();
+		}
 
+		// foundations 5-8
+		for (int i = 5; i <= 8; i++) {
+			stacks[i] = new Foundation();
+		}
+
+		// cascades 9-16
+		for (int i = 9; i <= 16; i++) {
+			stacks[i] = new Cascade();
+		}
+
+		int i = 9;
 		while (!stacks[0].isEmpty()) {
 			stacks[i++].addCard(stacks[0].removeTopCard());
-
 			if (i > 16) {
 				i = 9;
 			}
@@ -22,6 +35,7 @@ public class FreecellGame {
 	}
 
 	@Override
+	//there is issue with my toString
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 1; i < stacks.length; i++) {
@@ -40,6 +54,7 @@ public class FreecellGame {
 		if (stacks[srcStackNum].isEmpty()) {
 			return false;
 		}
+		
 		return stacks[destStackNum].playTo(stacks[srcStackNum]);
 	}
 

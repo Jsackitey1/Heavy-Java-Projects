@@ -9,7 +9,7 @@ public class Freecell {
 		
 	}
 	
-	
+
 	public void play() {
 		play(random.nextInt((int)(Math.random()*100)));
 	}

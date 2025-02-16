@@ -5,8 +5,12 @@ public class Cascade extends CardStack{
 		super();
 		
 	}
-
+//add null case
 	public boolean playTo(Card card) {
+		
+		if (card == null) {
+			return false;
+		}
 		
 		if (stack.isEmpty()) {
 			super.addCard(card);
