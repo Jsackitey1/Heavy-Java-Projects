@@ -8,6 +8,8 @@ class Human{
 		
 	}
 	
+	
+	
 	public Human(int gender,int age,String origin){
 		this.gender=gender;
 		this.age=age;

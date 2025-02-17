@@ -12,6 +12,8 @@ public class Cascade extends CardStack{
 			return false;
 		}
 		
+		
+		
 		if (stack.isEmpty()) {
 			super.addCard(card);
 			return true;

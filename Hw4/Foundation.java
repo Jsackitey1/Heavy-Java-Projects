@@ -21,6 +21,8 @@ public class Foundation extends CardStack {
 			}
 			return false;
 		}
+		
+		
 
 		Card topCard = getTopCard();
 
