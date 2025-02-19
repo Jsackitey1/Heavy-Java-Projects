@@ -1,8 +1,5 @@
 
-/**
- * @author sackjo02
- *
- */
+
 
 public class Card {
 	

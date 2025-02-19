@@ -4,34 +4,35 @@ public class Foundation extends CardStack {
 		super();
 	}
 
-	public boolean canPlayFrom() {
+	public boolean canPlayFrom() throws IllegalPlayException {
 		return false;
 	}
 
-	public boolean playTo(Card card) {
+	public boolean playTo(Card card) throws NullPointerException, IllegalPlayException {
 		if (card == null) {
-			return false;
+			throw new NullPointerException();
 		}
 
 		if (stack.isEmpty()) {
-
-			if (card.getRank() == 0) {
-				super.addCard(card);
-				return true;
+			if (card.getRank() != 0) {
+				throw new IllegalPlayException("The first foundation card must be an Ace.");
 			}
-			return false;
-		}
-		
-		
-
-		Card topCard = getTopCard();
-
-		if (card.getSuit() == topCard.getSuit() && card.getRank() == topCard.getRank() + 1) {
 			super.addCard(card);
 			return true;
 		}
 
-		return false;
+		Card topCard = getTopCard();
+
+		if (card.getSuit() != topCard.getSuit()) {
+			throw new IllegalPlayException("Plays to a foundation must match suit.");
+		}
+
+		if (card.getRank() != topCard.getRank() + 1) {
+			throw new IllegalPlayException("Plays to a foundation must have the next increasing rank.");
+		}
+
+		super.addCard(card);
+		return true;
 	}
 
 }

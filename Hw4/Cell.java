@@ -6,15 +6,16 @@ public class Cell extends CardStack{
 	}
 	
 	
-	//null check
+	//add null check
 	
-	public boolean playTo(Card card) {
+	public boolean playTo(Card card) throws NullPointerException,
+    IllegalPlayException {
 		
 		if (card == null) {
-			return false;
+			throw new NullPointerException();
 		}
 		if (!stack.isEmpty()) {
-			return false;
+			throw new IllegalPlayException("Cells may only contain a single card.");
 		}
 		
 		else {
