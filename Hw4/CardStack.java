@@ -42,6 +42,7 @@ public class CardStack {
 		}
 
 		addCard(card);
+		
 		return true;
 	}
 

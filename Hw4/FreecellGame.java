@@ -1,4 +1,5 @@
 public class FreecellGame {
+	
 	private CardStack[] stacks = new CardStack[17];
 	// 0:deck ; 1-4:cells ; 5-8:foundations , 9-16:cascades
 
@@ -6,9 +7,7 @@ public class FreecellGame {
 		// Initialize deck (index 0)
 		stacks[0] = new Deck(seed);
 
-		for (int i = 1; i < stacks.length; i++) {
-			stacks[i] = new CardStack();
-		}
+		
 
 		// Initialize cells (indices 1-4)
 		for (int i = 1; i <= 4; i++) {
@@ -83,14 +82,16 @@ public class FreecellGame {
 		}
 
 		// Get the top card from source stack
-		Card cardToMove = stacks[srcStackNum].getTopCard();
+//		Card cardToMove = stacks[srcStackNum].getTopCard();
 
 		// Try to play the card to destination
-		if (stacks[destStackNum].playTo(cardToMove)) {
-			// Only remove the card from source if destination accepted it
-			stacks[srcStackNum].removeTopCard();
-			return true;
-		}
+//		if (stacks[destStackNum].playTo(cardToMove)) {
+//			// Only remove the card from source if destination accepted it
+//			stacks[srcStackNum].removeTopCard();
+//			return true;
+//		}
+		
+		stacks[destStackNum].playTo(stacks[srcStackNum]);
 
 		return false;
 	}
