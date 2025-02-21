@@ -29,29 +29,22 @@ public class CardStack {
 	}
 
 	public boolean playTo(Card card) throws IllegalPlayException, NullPointerException {
-
 		if (card == null) {
 			throw new NullPointerException();
 		}
 
-		if (!stack.isEmpty()) {
-			Card topCard = stack.peek();
-			if (card.getSuit() != topCard.getSuit() && card.getRank() != topCard.getRank()) {
-				throw new IllegalPlayException("You cannot make the play.");
-			}
-		}
-
-		addCard(card);
-		
+		stack.add(card);
 		return true;
 	}
 
 	public boolean playTo(CardStack otherStack) throws IllegalPlayException {
 		if (!otherStack.canPlayFrom()) {
-			throw new IllegalPlayException("You cannot make the play.");
+			throw new IllegalPlayException("That card stack cannot be played from.");
 		}
 
 		boolean legalPlay = playTo(otherStack.getTopCard());
+
+		// System.out.println("The other stack is " + otherStack.toString());
 
 		if (legalPlay) {
 			otherStack.removeTopCard();
@@ -72,8 +65,10 @@ public class CardStack {
 	}
 
 	public String toString() {
-		String s = stack.toString();
-		return s.substring(1, s.length() - 1);
+		if (stack.isEmpty()) {
+			return " ";
+		}
+		return stack.toString();
 	}
 
 	public Card[] toArray() {

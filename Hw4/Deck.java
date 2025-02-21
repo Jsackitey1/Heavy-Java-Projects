@@ -1,4 +1,3 @@
-
 import java.util.Random;
 
 public class Deck extends CardStack {
@@ -27,7 +26,7 @@ public class Deck extends CardStack {
 		throw new IllegalPlayException("That card stack cannot be played from.");
 	}
 
-	public boolean playTo(Card card) throws IllegalPlayException, NullPointerException {
+	public boolean playTo(Card card) throws NullPointerException, IllegalPlayException {
 		if (card == null) {
 			throw new NullPointerException();
 		}

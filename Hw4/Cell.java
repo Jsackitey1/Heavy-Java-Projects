@@ -1,28 +1,22 @@
+public class Cell extends CardStack {
 
-public class Cell extends CardStack{
-	
 	public Cell() {
 		super();
 	}
-	
-	
-	//add null check
-	
+
+	// add null check
+
 	public boolean playTo(Card card) throws NullPointerException,
-    IllegalPlayException {
-		
+			IllegalPlayException {
+
 		if (card == null) {
 			throw new NullPointerException();
 		}
 		if (!stack.isEmpty()) {
 			throw new IllegalPlayException("Cells may only contain a single card.");
 		}
-		
-		else {
-			
-		super.addCard(card);
-		}
-		
+
+		stack.push(card);
 		return true;
 	}
 

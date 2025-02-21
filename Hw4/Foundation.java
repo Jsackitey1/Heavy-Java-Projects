@@ -5,7 +5,7 @@ public class Foundation extends CardStack {
 	}
 
 	public boolean canPlayFrom() throws IllegalPlayException {
-		return false;
+		throw new IllegalPlayException("That card stack cannot be played from.");
 	}
 
 	public boolean playTo(Card card) throws NullPointerException, IllegalPlayException {
@@ -17,9 +17,10 @@ public class Foundation extends CardStack {
 			if (card.getRank() != 0) {
 				throw new IllegalPlayException("The first foundation card must be an Ace.");
 			}
-			System.out.println(card.toString());
-			super.addCard(card);
-			System.out.println(card.toString());
+
+			// System.out.println("Before the play " + stack.toString());
+			stack.add(card);
+			// System.out.println("After the play " + stack.toString());
 			return true;
 		}
 
@@ -32,11 +33,10 @@ public class Foundation extends CardStack {
 		if (card.getRank() != topCard.getRank() + 1) {
 			throw new IllegalPlayException("Plays to a foundation must have the next increasing rank.");
 		}
-		System.out.println(card.toString());
-		super.addCard(card);
-		
-		System.out.println(card.toString());
+		// System.out.println("Before the play " + card.toString());
+		stack.add(card);
+
+		// System.out.println("After the play " + card.toString());
 		return true;
 	}
-
 }

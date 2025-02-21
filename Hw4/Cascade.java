@@ -19,6 +19,12 @@ public class Cascade extends CardStack {
 
 		Card topCard = getTopCard();
 
+		if (Card.suitIsRed[topCard.getSuit()] != Card.suitIsRed[card.getSuit()] &&
+				card.getRank() == topCard.getRank() - 1) {
+			super.addCard(card);
+			return true;
+		}
+
 		if (Card.suitIsRed[topCard.getSuit()] == Card.suitIsRed[card.getSuit()]) {
 			throw new IllegalPlayException("Plays to a cascade must alternate in suit color.");
 		}
@@ -26,8 +32,7 @@ public class Cascade extends CardStack {
 			throw new IllegalPlayException("Plays to a cascade must have the next decreasing rank.");
 		}
 
-		super.addCard(card);
-		return true;
+		return false;
 
 	}
 

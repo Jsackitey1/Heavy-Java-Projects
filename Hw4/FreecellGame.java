@@ -1,13 +1,11 @@
 public class FreecellGame {
-	
+
 	private CardStack[] stacks = new CardStack[17];
 	// 0:deck ; 1-4:cells ; 5-8:foundations , 9-16:cascades
 
 	public FreecellGame(long seed) {
 		// Initialize deck (index 0)
 		stacks[0] = new Deck(seed);
-
-		
 
 		// Initialize cells (indices 1-4)
 		for (int i = 1; i <= 4; i++) {
@@ -39,7 +37,8 @@ public class FreecellGame {
 
 		sb.append("Cells:\n");
 		for (int i = 1; i <= 4; i++) {
-			sb.append(String.format("%2d: %s\n", i, stacks[i]));
+			sb.append(String.format("%2d: %s\n", i,
+					stacks[i].isEmpty() ? " " : stacks[i].getTopCard()));
 		}
 
 		sb.append("Foundations:\n");
@@ -60,14 +59,20 @@ public class FreecellGame {
 		// Display Cascades (9-16)
 		sb.append("Cascades:\n");
 		for (int i = 9; i <= 16; i++) {
-			sb.append(String.format("%2d: %s\n", i, stacks[i]));
+			sb.append(String.format("%2d: ", i));
+			Card[] cards = stacks[i].toArray();
+			for (int j = 0; j < cards.length; j++) {
+				if (j > 0)
+					sb.append(", ");
+				sb.append(cards[j]);
+			}
+			sb.append("\n");
 		}
 
 		return sb.toString();
 	}
 
 	public boolean play(int srcStackNum, int destStackNum) throws IllegalPlayException {
-		// Validate stack numbers first
 		if (srcStackNum < 1 || srcStackNum > 16 ||
 				destStackNum < 1 || destStackNum > 16) {
 			throw new IllegalPlayException("Illegal stack number. Stacks are numbered 1-16.");
@@ -78,20 +83,17 @@ public class FreecellGame {
 		}
 
 		if (stacks[srcStackNum].isEmpty()) {
-			return false;
+			throw new IllegalPlayException("You cannot play from an empty stack.");
 		}
 
-		// Get the top card from source stack
-//		Card cardToMove = stacks[srcStackNum].getTopCard();
+		Card cardToMove = stacks[srcStackNum].getTopCard();
 
-		// Try to play the card to destination
-//		if (stacks[destStackNum].playTo(cardToMove)) {
-//			// Only remove the card from source if destination accepted it
-//			stacks[srcStackNum].removeTopCard();
-//			return true;
-//		}
-		
-		stacks[destStackNum].playTo(stacks[srcStackNum]);
+		// Try to play the card to destination stack
+		if (stacks[destStackNum].playTo(cardToMove)) {
+			// If successful, remove the card from source stack
+			stacks[srcStackNum].removeTopCard();
+			return true;
+		}
 
 		return false;
 	}
