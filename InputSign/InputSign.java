@@ -12,6 +12,7 @@ public class InputSign {
         
         int userInput = input.nextInt();          
 
+        
         if (userInput > 0) {
             System.out.println("positive");
         } else if (userInput < 0) {

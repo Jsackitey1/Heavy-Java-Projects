@@ -12,6 +12,8 @@ public class LineLength {
         System.out.print("Enter a line of text: ");
         String len = input.nextLine();          
 
+        
+        
         int linelength = len.length();
         
         String charact= (linelength > 1)? "characters":"character" ;

@@ -18,6 +18,7 @@ public class BigFraction {
 		if (den.signum()<0) {
 			den=den.negate();
 			num=num.negate();
+			
 		}
 		this.num = num;
         this.den = den;
