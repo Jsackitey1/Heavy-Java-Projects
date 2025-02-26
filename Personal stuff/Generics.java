@@ -12,7 +12,6 @@ public class Generics<E> {
 		Generics.print(list);
 		
 		
-		
 
 	}
 	

@@ -2,8 +2,6 @@ import java.util.NoSuchElementException;
 
 public class MyStack <E>{
 	
-	
-	
 	public MyLinkedList <E> MyStack=new MyLinkedList<>();
 	
 	
@@ -17,8 +15,6 @@ public class MyStack <E>{
 	}
 	
 	public E pop() {
-		
-		
 		
 		if(MyStack.isEmpty()) {
 			throw new NoSuchElementException("pop: MyStack is empty.");
