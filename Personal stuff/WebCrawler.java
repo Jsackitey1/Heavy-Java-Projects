@@ -13,7 +13,6 @@ public class WebCrawler {
 		
 		crawler(url);
 		
-
 	}
 
 	private static void crawler(String startingURL) {
