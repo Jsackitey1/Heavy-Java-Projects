@@ -1,7 +1,6 @@
 import java.util.NoSuchElementException;
 
 public class MyLinkedList <E>{
-	
 	MyLinkedListNode<E> head= null,tail=null;
 	
 

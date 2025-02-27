@@ -1,50 +1,48 @@
 import java.util.NoSuchElementException;
 
-public class MyQueue <E>{
-	
-	public MyLinkedList<E> MyQueue=new MyLinkedList<>();
-	
+public class MyQueue<E> {
+
+	public MyLinkedList<E> queue = new MyLinkedList<>();
+
 	public MyQueue() {
-		
+
 	}
-	 
+
 	public boolean isEmpty() {
-		return MyQueue.isEmpty();
+		return queue.isEmpty();
 	}
-	
+
 	public E dequeue() {
-		if(MyQueue.isEmpty()) {
+		if (queue.isEmpty()) {
 			throw new NoSuchElementException("dequeue: MyQueue is empty");
 		}
-		
+
 		else {
-			MyLinkedListNode<E> mhead=MyQueue.head;
-			MyLinkedListNode<E> currenthead=mhead.next;
-			MyQueue.head= currenthead;
-			return mhead.item;
+			return queue.removeHead();
 		}
 	}
-	
-	public E  peek() {
-		if(MyQueue.isEmpty()) {
+
+	public E peek() {
+		if (queue.isEmpty()) {
 			throw new NoSuchElementException("peek: MyQueue is empty");
 		}
-		
+
 		else {
-			return MyQueue.head.item;
+			E item = queue.removeHead();
+			queue.addToHead(item);
+
+			return item;
 		}
-		
+
 	}
-	
+
 	public void enqueue(E item) {
-		MyQueue.addToTail(item);
-		 
+		queue.addToTail(item);
+
 	}
-	
+
 	public String toString() {
-		return MyQueue.toString();
+		return queue.toString();
 	}
-	
-	
 
 }
