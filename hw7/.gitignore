@@ -11,3 +11,7 @@
 /CaesarCipher.class
 /CipherDemo.class
 /UnicodeSubstitutionCipher.class
+/SudokuNodeTest.class
+/SudokuNodeIsGoalTest.class
+/SudokuNodeSpecificTest.class
+/SudokuSpecificFailureTest.class

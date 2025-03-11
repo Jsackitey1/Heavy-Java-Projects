@@ -13,6 +13,7 @@ public class SudokuNode extends SearchNode implements java.lang.Cloneable {
 				this.grid[row][col] = grid[row][col];
 			}
 		}
+
 	}
 
 	public SudokuNode(java.util.Scanner scanner) {
@@ -23,7 +24,6 @@ public class SudokuNode extends SearchNode implements java.lang.Cloneable {
 		for (int row = 0; row < SIZE; row++) {
 			if (scanner.hasNextLine()) {
 				String line = scanner.nextLine();
-				// Process each character in the line
 				for (int col = 0; col < SIZE && col < line.length(); col++) {
 					char c = line.charAt(col);
 					if (c == '.') {
@@ -64,6 +64,7 @@ public class SudokuNode extends SearchNode implements java.lang.Cloneable {
 				}
 			}
 		}
+
 		return true;
 	}
 
@@ -74,29 +75,32 @@ public class SudokuNode extends SearchNode implements java.lang.Cloneable {
 		// Find first UNKNOWN cell
 		int emptyRow = -1;
 		int emptyCol = -1;
-
-		// Search row by row, column by column
-		outerLoop: for (int row = 0; row < SIZE; row++) {
+		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
 				if (grid[row][col] == UNKNOWN) {
 					emptyRow = row;
 					emptyCol = col;
-					break outerLoop;
+					break;
 				}
 			}
+			if (emptyRow != -1)
+				break;
 		}
 
-		// return empty list
-		if (emptyRow == -1) {
+		// If no empty cell found, return empty list
+		if (emptyRow == -1)
 			return children;
-		}
 
-		// For each possible value 1-9, check if it's valid for this cell
+		// For each valid value (1-9)
 		for (int value = 1; value <= 9; value++) {
 			if (isValidPlacement(emptyRow, emptyCol, value)) {
-				// Create a new node with the value filled in
+				// Create a deeply-cloned child using childClone
 				SudokuNode child = (SudokuNode) this.childClone();
+
+				// Fill in the candidate value in the UNKNOWN cell
 				child.grid[emptyRow][emptyCol] = value;
+
+				// Add child to the list
 				children.add(child);
 			}
 		}
@@ -104,58 +108,66 @@ public class SudokuNode extends SearchNode implements java.lang.Cloneable {
 		return children;
 	}
 
-	private boolean isValidPlacement(int row, int col, int value) {
+	private boolean isValidPlacement(int row, int col, int num) {
 		// Check row
 		for (int c = 0; c < SIZE; c++) {
-			if (grid[row][c] == value) {
-				// Value already exists in this row
+			if (grid[row][c] == num)
 				return false;
-			}
 		}
 
 		// Check column
 		for (int r = 0; r < SIZE; r++) {
-			if (grid[r][col] == value) {
+			if (grid[r][col] == num)
 				return false;
-			}
 		}
 
-		int blockRow = (row / 3) * 3;
-		int blockCol = (col / 3) * 3;
-
-		for (int r = blockRow; r < blockRow + 3; r++) {
-			for (int c = blockCol; c < blockCol + 3; c++) {
-				if (grid[r][c] == value) {
+		int subgridRowStart = (row / 3) * 3;
+		int subgridColStart = (col / 3) * 3;
+		for (int r = subgridRowStart; r < subgridRowStart + 3; r++) {
+			for (int c = subgridColStart; c < subgridColStart + 3; c++) {
+				if (grid[r][c] == num)
 					return false;
-				}
 			}
 		}
 
-		// the value can be placed in the cell
 		return true;
 	}
 
-	public int getCell(int row, int column) {
-		return grid[row][column];
-
+	public int getCell(int row, int col) throws IndexOutOfBoundsException {
+		if (row < 0 || row >= 9 || col < 0 || col >= 9) {
+			throw new IndexOutOfBoundsException("Cell index out of bounds.");
+		}
+		return grid[row][col];
 	}
 
-	public java.lang.String toString() {
+	@Override
+	public String toString() {
 		StringBuilder sb = new StringBuilder();
+
 		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
-				sb.append(grid[row][col] == UNKNOWN ? '.' : grid[row][col]);
+				if (grid[row][col] == UNKNOWN) {
+					sb.append('.');
+				} else {
+					// Append the digit (1-9)
+					sb.append(grid[row][col]);
+				}
 			}
-			sb.append('\n');
+			if (row < SIZE - 1) {
+				sb.append('\n');
+			}
 		}
+
 		return sb.toString();
 	}
 
+	
+	@Override
 	public java.lang.Object clone() {
-		// shallow clone from the parent
+		// Get shallow clone from the parent
 		SudokuNode copy = (SudokuNode) super.clone();
 
-		// deep copy of the grid
+		// Deep copy the grid
 		int[][] gridCopy = new int[SIZE][SIZE];
 		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
@@ -163,7 +175,7 @@ public class SudokuNode extends SearchNode implements java.lang.Cloneable {
 			}
 		}
 
-		// Update the copy's grid with our deep copy
+		// Replace the grid with the deep copy
 		copy.grid = gridCopy;
 
 		return copy;

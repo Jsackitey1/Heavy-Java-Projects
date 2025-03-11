@@ -13,7 +13,7 @@ public class DepthFirstSearcher extends Searcher{
 		stack.push(node);
 		
 		
-		while(true) {
+		while(!stack.isEmpty()) {
 			//if the queue is empty, return false
 			if(stack.isEmpty()) {
 				return false;
@@ -35,6 +35,7 @@ public class DepthFirstSearcher extends Searcher{
 				stack.push(child);
 			}
 		}
+		return false;
 	}
 	
 	
