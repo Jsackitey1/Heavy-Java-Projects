@@ -162,6 +162,8 @@ public class SudokuNode extends SearchNode implements java.lang.Cloneable {
 	}
 
 	
+	
+	
 	@Override
 	public java.lang.Object clone() {
 		// Get shallow clone from the parent
