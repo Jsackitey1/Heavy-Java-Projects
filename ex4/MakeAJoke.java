@@ -22,6 +22,7 @@ public class MakeAJoke {
 		return "";
 	}
 	
+	
 	public void addJoke(java.lang.String joke) {
 		
 	}
