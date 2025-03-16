@@ -4,81 +4,82 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class MakeAJoke {
-	public String data="";
 	
-	
+	public String data = "";
+
 	public static void main(java.lang.String[] args) {
-		MakeAJoke tryjokes=new MakeAJoke();
+		MakeAJoke tryjokes = new MakeAJoke();
 		tryjokes.loadJokes("jokes.txt");
 		System.out.println(tryjokes.getJoke());
-		
-		
-		
-		
-		
 	}
-	
+
 	public MakeAJoke() {
-		
+
 	}
-	
+
 	public boolean loadJokes(java.lang.String filename) {
-		
+
 		try {
-			 File file = new File(filename);
-		      if (file.exists()) {
-		      Scanner input = new Scanner(file);
-		      while (input.hasNextLine()) {
-		        data += input.nextLine();     
-		      } 
-		      
-		      input.close();
-		      
-		      
-		      return true;
-		      }
-		      
-		    } catch (FileNotFoundException e) 
-			{
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
-		    }
-		
-		
+			File file = new File(filename);
+			if (file.exists()) {
+				Scanner input = new Scanner(file);
+				StringBuilder sb = new StringBuilder();
+				while (input.hasNextLine()) {
+					sb.append(input.nextLine()).append("\n");
+				}
+
+				input.close();
+				data = sb.toString();
+
+				return true;
+			}
+
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+
 		return false;
 	}
-	
-	public java.lang.String getJoke(){
-		
-		String[] mydata= data.split("joke:");
-		return mydata[(int)(Math.random()*mydata.length)-1];
+
+	public java.lang.String getJoke() {
+		String[] mydata = data.split("joke:");
+		if (mydata.length <= 1) {
+			return "No jokes available";
+		}
+		int randomIndex = 1 + (int) (Math.random() * (mydata.length - 1));
+		return mydata[randomIndex];
 	}
-	
-	public java.lang.String getJoke(int index){
-		String[] mydata= data.split("joke:");
-		return mydata[index];
+
+	public java.lang.String getJoke(int index) {
+		String[] mydata = data.split("joke:");
+		if (index < 0 || index >= mydata.length - 1) {
+			return "Invalid joke index";
+		}
+		return mydata[index + 1];
 	}
-	
-	
+
 	public void addJoke(java.lang.String joke) {
-		this.data += "joke:\n"+ joke;
+		String jokeToAdd = joke;
+		if (!joke.endsWith("\n")) {
+			jokeToAdd = joke + "\n";
+		}
+		this.data += "joke:\n" + jokeToAdd;
 	}
-	
+
 	public int size() {
-		return data.split("jokes:").length;
+		String[] jokes = data.split("joke:");
+		return Math.max(0, jokes.length - 1);
 	}
-	
-	public boolean saveJokes(java.lang.String filename) throws FileNotFoundException{
-		try(PrintWriter output=new PrintWriter(filename)) {
-			
-			for (String joke :data.split("joke:")) {
-				output.println("joke:");
-				output.print(joke);
+
+	public boolean saveJokes(java.lang.String filename) throws FileNotFoundException {
+		try (PrintWriter output = new PrintWriter(filename)) {
+			String[] jokes = data.split("joke:");
+			for (int i = 1; i < jokes.length; i++) {
+				output.print("joke:");
+				output.print(jokes[i]);
 			}
 			return true;
 		}
 	}
-	
-	
-
 }
