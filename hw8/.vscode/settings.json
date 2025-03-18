@@ -1,0 +1,14 @@
+{
+    "java.project.referencedLibraries": [
+        "/Library/Java/JavaFX/lib/*.jar"
+    ],
+    "java.project.sourcePaths": [
+        "."
+    ],
+    "java.configuration.runtimeArgs": [
+        "--module-path",
+        "/Library/Java/JavaFX/lib",
+        "--add-modules",
+        "javafx.controls,javafx.fxml,javafx.graphics"
+    ]
+} 
