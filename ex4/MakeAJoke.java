@@ -2,10 +2,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.Random;
 
 public class MakeAJoke {
-	
+
 	public String data = "";
+	private Random random = new Random(42); 
 
 	public static void main(java.lang.String[] args) {
 		MakeAJoke tryjokes = new MakeAJoke();
@@ -27,7 +29,6 @@ public class MakeAJoke {
 				while (input.hasNextLine()) {
 					sb.append(input.nextLine()).append("\n");
 				}
-
 				input.close();
 				data = sb.toString();
 
@@ -43,16 +44,13 @@ public class MakeAJoke {
 	}
 
 	public java.lang.String getJoke() {
-		String[] mydata = data.split("joke:");
-		if (mydata.length <= 1) {
-			return "No jokes available";
-		}
-		int randomIndex = 1 + (int) (Math.random() * (mydata.length - 1));
-		return mydata[randomIndex];
+		String[] mydata = data.split("joke:\n");
+		int randomIndex = random.nextInt(mydata.length);
+		return mydata[randomIndex].trim();
 	}
 
 	public java.lang.String getJoke(int index) {
-		String[] mydata = data.split("joke:");
+		String[] mydata = data.split("joke:\n");
 		if (index < 0 || index >= mydata.length - 1) {
 			return "Invalid joke index";
 		}
@@ -68,15 +66,15 @@ public class MakeAJoke {
 	}
 
 	public int size() {
-		String[] jokes = data.split("joke:");
+		String[] jokes = data.split("joke:\n");
 		return Math.max(0, jokes.length - 1);
 	}
 
 	public boolean saveJokes(java.lang.String filename) throws FileNotFoundException {
 		try (PrintWriter output = new PrintWriter(filename)) {
-			String[] jokes = data.split("joke:");
+			String[] jokes = data.split("joke:\n");
 			for (int i = 1; i < jokes.length; i++) {
-				output.print("joke:");
+				output.print("joke:\n");
 				output.print(jokes[i]);
 			}
 			return true;

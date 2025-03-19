@@ -5,10 +5,13 @@
     "java.project.sourcePaths": [
         "."
     ],
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.project.outputPath": "bin",
     "java.configuration.runtimeArgs": [
         "--module-path",
         "/Library/Java/JavaFX/lib",
         "--add-modules",
-        "javafx.controls,javafx.fxml,javafx.graphics"
+        "javafx.controls,javafx.graphics"
     ]
 } 
