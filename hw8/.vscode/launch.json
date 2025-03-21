@@ -3,6 +3,13 @@
     "configurations": [
       {
         "type": "java",
+        "name": "CardPaneTest",
+        "request": "launch",
+        "mainClass": "CardPaneTest",
+        "projectName": "hw8"
+      },
+      {
+        "type": "java",
         "name": "Launch JavaFX App",
         "request": "launch",
         "mainClass": "Main",
