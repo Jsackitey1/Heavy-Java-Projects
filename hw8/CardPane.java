@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
+
 public class CardPane extends Pane {
 
     // Constants for card dimensions, image paths, and layout
