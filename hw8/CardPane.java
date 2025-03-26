@@ -131,8 +131,9 @@ public class CardPane extends Pane {
 
         // Calculate symbol size based on available space
         // Use a smaller portion of the available space to ensure symbols fit
-        double maxSymbolWidth = availableWidth / 8.0; // Increased divisor to make symbols smaller
-        double maxSymbolHeight = availableHeight / 10.0; // Increased divisor to make symbols smaller
+        // Consider the grid dimensions (3 columns, 5 rows) and padding
+        double maxSymbolWidth = availableWidth / (3 + 0.5); // Account for 3 columns plus some padding
+        double maxSymbolHeight = availableHeight / (5 + 0.5); // Account for 5 rows plus some padding
         double symbolSize = Math.min(maxSymbolWidth, maxSymbolHeight);
 
         // Update all symbol sizes
@@ -143,9 +144,16 @@ public class CardPane extends Pane {
             }
         }
 
-        // Center the symbol grid
-        symbolGrid.setLayoutX(cardX + CARD_MARGIN);
-        symbolGrid.setLayoutY(cardY + CARD_MARGIN);
+        // Calculate grid dimensions
+        double gridWidth = (3 * symbolSize) + (2 * SYMBOL_PADDING); // 3 columns with 2 gaps
+        double gridHeight = (5 * symbolSize) + (4 * SYMBOL_PADDING); // 5 rows with 4 gaps
+
+        // Center the symbol grid within the card
+        double gridX = cardX + (width - gridWidth) / 2;
+        double gridY = cardY + (height - gridHeight) / 2;
+
+        symbolGrid.setLayoutX(gridX);
+        symbolGrid.setLayoutY(gridY);
     }
 
     // Method to update the card display based on the card string
