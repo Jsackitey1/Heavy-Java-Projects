@@ -131,14 +131,14 @@ public class CardPane extends Pane {
 
         // Calculate symbol size based on available space
         // Use a smaller portion of the available space to ensure symbols fit
-        // Consider the grid dimensions (3 columns, 5 rows) and padding
-        double maxSymbolWidth = availableWidth / (3 + 0.5); // Account for 3 columns plus some padding
-        double maxSymbolHeight = availableHeight / (5 + 0.5); // Account for 5 rows plus some padding
+        double maxSymbolWidth = availableWidth / 3; // Account for 3 columns plus some padding
+        double maxSymbolHeight = availableHeight / 5.5; // Account for 5 rows plus some padding
         double symbolSize = Math.min(maxSymbolWidth, maxSymbolHeight);
 
-        // Update all symbol sizes
-        for (ImageView symbol : suitImages) {
-            if (symbol != null) {
+        // Update all symbol sizes in the grid
+        for (javafx.scene.Node node : symbolGrid.getChildren()) {
+            if (node instanceof ImageView) {
+                ImageView symbol = (ImageView) node;
                 symbol.setFitWidth(symbolSize);
                 symbol.setFitHeight(symbolSize);
             }

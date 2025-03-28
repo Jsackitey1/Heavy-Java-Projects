@@ -7,7 +7,7 @@ public class CardGridPane extends GridPane {
 
     private static final double GRID_PADDING = 10.0;
     private static final double GRID_GAP = 10.0;
-    private static final double CARD_MARGIN = 5.0;
+    private static final double CARD_MARGIN = 4.0;
 
     public CardGridPane(StringProperty[][] cardGrid) {
         setPadding(new Insets(GRID_PADDING));
