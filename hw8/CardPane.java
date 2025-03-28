@@ -11,6 +11,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 
 public class CardPane extends Pane {
 
@@ -63,7 +68,7 @@ public class CardPane extends Pane {
         super();
         this.cardStr = cardStr;
 
-        // Set preferred size to match standard poker card dimensions
+        // Set a uniform preferred size for all cards
         setPrefSize(635, 889);
 
         // Initialize card background with rounded corners
