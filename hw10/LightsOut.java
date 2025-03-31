@@ -130,6 +130,7 @@ public class LightsOut extends Application {
         if (isLightOn(row, col)) {
             lights[row][col].setBackground(OFF_BACKGROUND);
         } else {
+
             lights[row][col].setBackground(ON_BACKGROUND);
         }
     }
