@@ -1,14 +1,7 @@
 package application;
 
+import java.awt.Insets;
 import java.util.Stack;
-
-import javafx.beans.property.StringProperty;
-import javafx.geometry.Insets;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.TransferMode;
-import javafx.scene.layout.GridPane;
 
 public class CardGridPane extends GridPane {
 
