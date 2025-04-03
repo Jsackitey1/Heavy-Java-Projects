@@ -32,6 +32,8 @@ public class LightsOut extends Application {
         Stage sizeStage = new Stage();
         sizeStage.setTitle("Lights Out Size");
 
+        
+        
         VBox sizeBox = new VBox(5);
         sizeBox.setAlignment(Pos.CENTER);
 
