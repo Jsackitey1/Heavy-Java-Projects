@@ -77,6 +77,7 @@ public class NQueensSolver {
 	 * @param args optionally, a String array containing a String of a single positive integer n specifying the problem size.
 	 */
 	public static void main(String[] args) {
+		
 		Scanner in = new Scanner(System.in);
 		if (args.length == 0)
 			System.out.print("Number of queens? ");
@@ -100,7 +101,4 @@ public class NQueensSolver {
 		System.out.println("Parallel: " + solver.solveNThreads() + " solutions in " + (System.currentTimeMillis() - startTime) + " ms");
 		in.close();
 	}
-}
-public class NQueensSolver {
-
 }
