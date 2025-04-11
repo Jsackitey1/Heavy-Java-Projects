@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class NQueensSolver {
+	
 
 	/**
 	 * boolean verbose - whether or not to print each solution found
