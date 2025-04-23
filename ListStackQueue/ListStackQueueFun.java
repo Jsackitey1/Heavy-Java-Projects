@@ -534,37 +534,80 @@ public class ListStackQueueFun {
 		System.out.println("\n\nExercises:");
 		
 		System.out.println("(3.1) Uncomment the true statement:");
-		// TODO
+		
 		//System.out.println("For multithreaded access and use, use an ArrayList.");
-		//System.out.println("For multithreaded access and use, use a Vector.");
+		System.out.println("For multithreaded access and use, use a Vector.");
 
 		System.out.println("(3.2) Using an enhanced for loop (i.e. for-each loop), push the given String\n"
 				+ "      names onto a Stack. Then, create a loop that, while the Stack is\n"
 				+ "      not empty, pops and prints each String:");
 		String[] names = {"Ann", "Bob", "Cal", "Deb"};
-		// TODO
+		Stack <String> nameStack=new Stack<>();
+		for (String name : names) {
+			nameStack.push(name);
+			
+		}
+		
+		while (!nameStack.isEmpty()) {
+			System.out.println(nameStack.pop());
+		}
 		
 		System.out.println("(3.3) Do the same as in exercise (3.2), except use a Queue with\n"
 				+ "      methods offer and poll:");
-		// TODO	
+		Queue<String > nameQueue=new LinkedList<>();
+		for (String name  : names) {
+			nameQueue.offer(name);
+		}
+		
+		while(!nameQueue.isEmpty()) {
+			System.out.println(nameQueue.poll());
+		}
 		
 		System.out.println("(3.4) Do the same as in exercise (3.2), except use a Deque with\n"
 				+ "      methods addLast and removeLast:");
-		// TODO	
+		Deque<String > nameDeque=new LinkedList<>();
+		for (String name  : names) {
+			nameDeque.addLast(name);
+		}
+		
+		while(!nameDeque.isEmpty()) {
+			System.out.println(nameDeque.removeLast());
+		}
 		
 		System.out.println("(3.5) Do the same as in exercise (3.2), except use a Deque with\n"
 				+ "      methods addLast and removeFirst:");
-		// TODO	
+		Deque<String > nameDeque1=new LinkedList<>();
+		for (String name  : names) {
+			nameDeque1.addLast(name);
+		}
+		
+		while(!nameDeque1.isEmpty()) {
+			System.out.println(nameDeque1.removeFirst());
+		}	
 		
 		System.out.println("(3.6) Create an Integer PriorityQueue, offer the values of data.get(2),\n"
 				+ "      and poll all values of the PriorityQueue, printing each on a\n"
 				+ "      separate line:");
-		// TODO
+		Queue<Integer> pqueue=new PriorityQueue<>();
+		for(int value:data.get(2)) {
+			pqueue.offer(value);
+		}
+		
+		while(!pqueue.isEmpty()) {
+			System.out.println(pqueue.poll());
+		}
 		
 		System.out.println("(3.7) Do the same as in (3.6), but specifying reverse order for the\n"
 				+ "      PriorityQueue by constructing it with an appropriate\n"
 				+ "      Comparator:");
-		// TODO
+		Queue<Integer> pqueue1=new PriorityQueue<>(size,Collections.reverseOrder());
+		for(int value:data.get(2)) {
+			pqueue1.offer(value);
+		}
+		
+		while(!pqueue1.isEmpty()) {
+			System.out.println(pqueue1.poll());
+		}
 		
 	}
 }
