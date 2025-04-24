@@ -6,6 +6,7 @@ public class IFGame {
 	
 	public boolean echoOn=false;
 	public Location location;
+	Location inventory= new Location("inventories","");
 	
 	
 
