@@ -1,0 +1,220 @@
+Escape the Bedroom - No Door, No Window
+
+You awaken in a random bedroom on the second floor a hotel.
+Something feels off — the door is locked from the outside.
+The window overlooks a steep backyard ravine, making any attempt to jump suicidal.
+No one answers your calls for help.
+
+You begin to explore. There has to be a way out.
+
+Bed
+Your bed, where you woke up. The sheets are rumpled.
+Possible exits: se s sw 
+> examine
+You examine the Bed carefully.
+The bed looks normal. You might be able to lift it to look underneath.
+
+Bed
+Possible exits: se s sw 
+> lift bed
+You lift the bed and find a coat hanger, bent out of shape. It might be good for lock-picking or reaching tight spaces.
+
+Bed
+Possible exits: se s sw 
+You see: coat hanger 
+> take coat hanger
+You take the coat hanger.
+
+Bed
+Possible exits: se s sw 
+> look
+
+Bed
+Your bed, where you woke up. The sheets are rumpled.
+Possible exits: se s sw 
+> s
+
+Desk & Drawer
+A wooden desk with a locked drawer.
+The right combo is somewhere in the room, perhaps hidden in plain sight
+Possible exits: s e n 
+> unlock drawer
+You use the coat hanger to pry the drawer slightly open.
+Enter the 3-digit combination: 
+The drawer clicks open! Inside you find a journal with notes and a flashlight without batteries.
+
+Desk & Drawer
+Possible exits: s e n 
+You see: journal flashlight 
+> take journal
+You take the journal.
+
+Desk & Drawer
+Possible exits: s e n 
+You see: flashlight 
+> i
+Inventory:
+- coat hanger
+- journal
+
+Desk & Drawer
+Possible exits: s e n 
+You see: flashlight 
+> drop journal
+You drop the journal.
+
+Desk & Drawer
+Possible exits: s e n 
+You see: flashlight journal 
+> i
+Inventory:
+- coat hanger
+
+Desk & Drawer
+Possible exits: s e n 
+You see: flashlight journal 
+> look
+
+Desk & Drawer
+A wooden desk with a locked drawer.
+The right combo is somewhere in the room, perhaps hidden in plain sight
+Possible exits: s e n 
+You see: flashlight journal 
+> take flashlight
+You take the flashlight.
+
+Desk & Drawer
+Possible exits: s e n 
+You see: journal 
+> take journal
+You take the journal.
+
+Desk & Drawer
+Possible exits: s e n 
+> n
+
+Bed
+Possible exits: se s sw 
+> sw
+
+Closet
+A walk-in closet with clothes hanging.
+Possible exits: e ne 
+You see: jacket 
+> take jacket
+You take the jacket.
+
+Closet
+Possible exits: e ne 
+> search jacket
+You search inside the jacket and find AA batteries.
+
+Closet
+Possible exits: e ne 
+You see: batteries 
+> take batteries
+You take the batteries.
+
+Closet
+Possible exits: e ne 
+> drop jacket
+You drop the jacket.
+
+Closet
+Possible exits: e ne 
+You see: jacket 
+> i
+Inventory:
+- coat hanger
+- flashlight
+- journal
+- batteries
+
+Closet
+Possible exits: e ne 
+You see: jacket 
+> look
+
+Closet
+A walk-in closet with clothes hanging.
+Possible exits: e ne 
+You see: jacket 
+> use batteries
+You insert the batteries into the flashlight. It works now!
+
+Closet
+Possible exits: e ne 
+You see: jacket 
+> e
+
+Desk & Drawer
+Possible exits: s e n 
+> n
+
+Bed
+Possible exits: se s sw 
+> se
+
+Bookshelf
+A tall bookshelf filled with books.
+Possible exits: s w nw 
+You see: Room of Riddles Hidden Spaces 
+> pull out books
+You pull out the book titled 'Hidden Spaces' and hear a click. A low clunk sound reveals the shelf can slide. Behind it is a narrow opening, but it's too dark to enter safely.
+
+Bookshelf
+Possible exits: s w nw 
+You see: Room of Riddles Hidden Spaces 
+> drop journal
+You drop the journal.
+
+Bookshelf
+Possible exits: s w nw 
+You see: Room of Riddles Hidden Spaces journal 
+> i
+Inventory:
+- coat hanger
+- flashlight
+
+Bookshelf
+Possible exits: s w nw 
+You see: Room of Riddles Hidden Spaces journal 
+> move bookshelf
+You slide the bookshelf aside, revealing a narrow opening. It's too dark to enter safely.
+You use your flashlight to light the path. Inside is a vent opening... but it's sealed with screws.
+
+Bookshelf
+Possible exits: s w nw 
+You see: Room of Riddles Hidden Spaces journal 
+> s
+
+Painting
+A large painting hangs on the wall.
+Possible exits: w n 
+> move painting
+You move the painting aside and find a mini-safe with no lock, just screws. Inside is a journal entry from a parent revealing they once hid in a crawlspace behind the bookshelf as a child.
+
+Painting
+Possible exits: w n 
+You see: screwdriver 
+> take screwdriver
+You take the screwdriver.
+
+Painting
+Possible exits: w n 
+> w
+
+Vent
+A ventilation grate in the wall.
+Possible exits: e 
+You see: vent grate 
+> use screwdriver
+You use the screwdriver to remove the vent screws. The vent opens, revealing a vertical shaft that leads to an old dumbwaiter-like chute used for laundry.
+
+Vent
+Possible exits: e 
+You see: vent grate 
+> escape
+You crawl into the vent and slide down the shaft. You tumble into the pantry and stumble upright.
+You're free. You hear no voices. The house is eerily quiet. Was it a prank? A mistake? You'll figure that out later.
+For now, you've won your freedom — the clever way.

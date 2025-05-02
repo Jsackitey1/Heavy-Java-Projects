@@ -1,0 +1,37 @@
+examine
+lift bed
+take coat hanger
+look
+s
+unlock drawer
+243
+take journal
+i
+drop journal
+i
+look
+take flashlight
+take journal
+n
+sw
+take jacket
+search jacket
+take batteries
+drop jacket
+i
+look
+use batteries
+e
+n
+se
+pull out books
+drop journal
+i
+move bookshelf
+s
+move painting
+take screwdriver
+w
+use screwdriver
+escape
+quit

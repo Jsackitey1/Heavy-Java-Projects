@@ -36,38 +36,37 @@ public class IFGame {
 		Location painting = new Location("Painting", "A large painting hangs on the wall.");
 		Location vent = new Location("Vent", "A ventilation grate in the wall.");
 
-		// Set up exits - making sure all locations are properly connected
 		// Bed connections
-		bed.exits.put("s", desk); // South to desk
-		bed.exits.put("se", bookshelf); // Southeast to bookshelf
-		bed.exits.put("sw", closet); // Southwest to closet
+		bed.exits.put("s", desk);
+		bed.exits.put("se", bookshelf); 
+		bed.exits.put("sw", closet); 
 
 		// Desk connections
-		desk.exits.put("n", bed); // North to bed
-		desk.exits.put("e", bookshelf); // East to bookshelf
-		desk.exits.put("s", carpet); // South to carpet
+		desk.exits.put("n", bed); 
+		desk.exits.put("e", bookshelf); 
+		desk.exits.put("s", carpet); 
 
 		// Bookshelf connections
-		bookshelf.exits.put("nw", bed); // Northwest to bed
-		bookshelf.exits.put("w", desk); // West to desk
-		bookshelf.exits.put("s", painting); // South to painting
+		bookshelf.exits.put("nw", bed); 
+		bookshelf.exits.put("w", desk); 
+		bookshelf.exits.put("s", painting); 
 
 		// Carpet connections
-		carpet.exits.put("n", desk); // North to desk
-		carpet.exits.put("e", bookshelf); // East to bookshelf
+		carpet.exits.put("n", desk); 
+		carpet.exits.put("e", bookshelf); 
 
 		// Closet connections
-		closet.exits.put("ne", bed); // Northeast to bed
-		closet.exits.put("e", desk); // East to desk
+		closet.exits.put("ne", bed); 
+		closet.exits.put("e", desk); 
 
 		// Painting connections
-		painting.exits.put("n", bookshelf); // North to bookshelf
-		painting.exits.put("w", vent); // West to vent
+		painting.exits.put("n", bookshelf); 
+		painting.exits.put("w", vent); 
 
 		// Vent connections
-		vent.exits.put("e", painting); // East to painting
+		vent.exits.put("e", painting); 
 
-		// Add items to locations
+		
 		// Bed items
 		Item coatHanger = new Item("coat hanger",
 				"A bent metal coat hanger. Might be useful for lock-picking or reaching tight spaces.");
@@ -129,19 +128,36 @@ public class IFGame {
 				System.out.println(command);
 			}
 
+			// quit command
 			if (command.equals("quit")) {
 				System.exit(0);
-			} else if (command.equals("look")) {
-				location.isVisited = false;
-			} else if (command.equals("examine")) {
-				System.out.println(location.examine());
-			} else if (command.startsWith("take ")) {
-				takeItem(command.substring(5));
-			} else if (command.startsWith("use ")) {
-				useItem(command.substring(4));
-			} else if (command.equals("inventory")) {
+			}
+			else if (command.equals("restart")) {
+				initialize();
+				continue;
+			}
+			else if (command.equals("inventory") || command.equals("i")) {
 				showInventory();
-			} else if (command.equals("unlock drawer")) {
+			}
+			else if (command.equals("look")) {
+				location.isVisited = false;
+			}
+			else if (command.equals("examine") || command.equals("x")) {
+				System.out.println(location.examine());
+			}
+			else if (command.startsWith("examine ") || command.startsWith("x ")) {
+				String object = command.substring(command.indexOf(" ") + 1);
+				examineObject(object);
+			}
+			else if (command.startsWith("take ") || command.startsWith("get ")) {
+				String itemName = command.substring(command.indexOf(" ") + 1);
+				takeItem(itemName);
+			}
+			else if (command.startsWith("drop ")) {
+				String itemName = command.substring(command.indexOf(" ") + 1);
+				dropItem(itemName);
+			}
+			else if (command.equals("unlock drawer")) {
 				unlockDrawer();
 			} else if (command.equals("lift bed")) {
 				System.out.println(location.liftBed());
@@ -154,7 +170,6 @@ public class IFGame {
 				if (location.name.equals("Bookshelf") && bookshelfMoved) {
 					System.out.println(
 							"You slide the bookshelf aside, revealing a narrow opening. It's too dark to enter safely.");
-					// Check if player has flashlight
 					boolean hasFlashlight = false;
 					for (Item item : inventory.items) {
 						if (item.name.equals("flashlight")) {
@@ -169,12 +184,61 @@ public class IFGame {
 				} else {
 					System.out.println("There's nothing to move here.");
 				}
+			} else if (command.equals("move painting")) {
+				System.out.println(location.movePainting());
+			} else if (command.equals("search jacket")) {
+				System.out.println(location.searchJacket());
+			} else if (command.equals("lift carpet")) {
+				System.out.println(location.liftCarpet());
 			} else if (command.equals("open vent")) {
 				openVent();
 			} else if (command.equals("escape")) {
 				tryEscape();
-			} else {
-				// Handle movement
+			} else if (command.startsWith("use ")) {
+				String itemName = command.substring(4);
+				useItem(itemName);
+			} else if (command.startsWith("use ") && command.contains(" with ")) {
+				// use with command
+				String[] parts = command.split(" with ");
+				String item1 = parts[0].substring(4).trim();
+				String item2 = parts[1].trim();
+				useItemWith(item1, item2);
+			}
+			else {
+				
+
+				if (command.startsWith("go ")) {
+					command = command.substring(3);
+				}
+
+
+				switch (command) {
+					case "n":
+					case "north":
+						command = "n";
+						break;
+					case "s":
+					case "south":
+						command = "s";
+						break;
+					case "e":
+					case "east":
+						command = "e";
+						break;
+					case "w":
+					case "west":
+						command = "w";
+						break;
+					case "u":
+					case "up":
+						command = "u";
+						break;
+					case "d":
+					case "down":
+						command = "d";
+						break;
+				}
+
 				Location nextLocation = location.exits.get(command);
 				if (nextLocation == null) {
 					System.out.println("You can't go that way.");
@@ -182,6 +246,72 @@ public class IFGame {
 					location = nextLocation;
 				}
 			}
+		}
+	}
+
+	private void examineObject(String object) {
+		// Check if object is in inventory
+		for (Item item : inventory.items) {
+			if (item.name.equalsIgnoreCase(object)) {
+				System.out.println(item.examine());
+				return;
+			}
+		}
+		for (Item item : location.items) {
+			if (item.name.equalsIgnoreCase(object)) {
+				System.out.println(item.examine());
+				return;
+			}
+		}
+		System.out.println("You don't see that here.");
+	}
+
+	private void dropItem(String itemName) {
+		for (Item item : inventory.items) {
+			if (item.name.equalsIgnoreCase(itemName)) {
+				inventory.items.remove(item);
+				location.items.add(item);
+				System.out.println("You drop the " + itemName + ".");
+				return;
+			}
+		}
+		System.out.println("You don't have that item.");
+	}
+
+	private void useItemWith(String item1, String item2) {
+		Item firstItem = null;
+		Item secondItem = null;
+
+		for (Item item : inventory.items) {
+			if (item.name.equalsIgnoreCase(item1)) {
+				firstItem = item;
+			}
+			if (item.name.equalsIgnoreCase(item2)) {
+				secondItem = item;
+			}
+		}
+
+		if (firstItem == null) {
+			System.out.println("You don't have the " + item1 + ".");
+			return;
+		}
+		if (secondItem == null) {
+			System.out.println("You don't have the " + item2 + ".");
+			return;
+		}
+
+		if (firstItem.name.equals("batteries") && secondItem.name.equals("flashlight")) {
+			secondItem.makeUsable();
+			System.out.println("You insert the batteries into the flashlight. It works now!");
+			inventory.items.remove(firstItem);
+		} else if (firstItem.name.equals("screwdriver") && secondItem.name.equals("vent grate")) {
+			if (location.name.equals("Vent") && !ventOpened) {
+				ventOpened = true;
+				System.out.println(
+						"You use the screwdriver to remove the vent screws. The vent opens, revealing a vertical shaft!");
+			}
+		} else {
+			System.out.println("You can't use those items together.");
 		}
 	}
 

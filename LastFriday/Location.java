@@ -72,7 +72,7 @@ public class Location {
 					break;
 				case "desk & drawer":
 					sb.append(
-							"The drawer is locked with a 3-digit combination lock. The right combo is somewhere in the room — perhaps hidden in plain sight.");
+							"The drawer is locked with a 3-digit combination lock. The right combo is somewhere in the room — perhaps hidden in plain sight(243).");
 					break;
 				case "bookshelf":
 					sb.append(
